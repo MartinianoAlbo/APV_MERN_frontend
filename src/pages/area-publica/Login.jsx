@@ -62,7 +62,7 @@ export const Login = () => {
       </div>
 
       {/* Formulario */}
-      <div className="max-h-full flex justify-content-center items-center col-span-2 md:mx-56 py-12 px-8  lg:px-8">
+      <div className="max-h-full flex justify-center items-center col-span-2 py-12 px-8 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
