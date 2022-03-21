@@ -18,7 +18,7 @@ export const AdministrarPacientes = () => {
         <Formulario />
       </div>
 
-      <div className="md:w-1/2 lg:w-3/5 mt-8 " >
+      <div className="mx-2 md:w-1/2 lg:w-3/5 mt-8 " >
         <ListadoPacientes />
       </div>
     </div>
