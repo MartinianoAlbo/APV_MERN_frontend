@@ -55,7 +55,7 @@ export const Login = () => {
   return (
     <>
       <div className="shadow-2xl lg:shadow-2xl lg:shadow-indigo-900 flex items-center py-8 px-3 sm:px-6 lg:px-8 bg-indigo-600">
-        <h1 className="text-white font-black text-6xl">
+        <h1 className="text-white font-black text-4xl">
           Inicia Sesion y Administra tus{' '}
           <span className="text-black">Pacientes.</span>
         </h1>
