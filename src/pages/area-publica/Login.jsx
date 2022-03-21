@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useForm } from '../../hooks/useForm'
 import { useAuth } from '../../hooks/useAuth'
 import { Alerta } from '../../components/Alerta'
@@ -14,7 +14,7 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  const {setAuth}= useAuth()
+  const {setAuth} = useAuth()
 
   const [alerta, setAlerta]  = useState({})
 
