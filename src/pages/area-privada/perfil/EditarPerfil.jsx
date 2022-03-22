@@ -20,14 +20,12 @@ export const EditarPerfil = () => {
   const { pass, new_pass } = formValues
   const { nombre, telefono, email, img_perfil } = perfil
 
-  console.log(perfil)
-
-
 
   const handleFileChange = async (e) => {
     e.preventDefault()
     const file = e.target.files[0]
 
+    console.log(file);
     if (file) {
       const resultado = await fileUpload(file)
       setPerfil({
