@@ -16,6 +16,8 @@ const Header = () => {
   useEffect(() => {
     if(window.screen.width > min_width && window.screen.width < max_width) {
       btn_img.current.setAttribute('disabled', '')
+    }else{
+      btn_img.current.removeAttribute('disabled')
     }
   
   }, [])
@@ -32,7 +34,7 @@ const Header = () => {
               {/* <!-- Mobile menu button--> */}
               <button
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                className="inline-flex items-center justify-center z-40 p-2 rounded-md text-gray-400 hover:text-white hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
                 onClick={() => setMobile(!mobile_menu)}
@@ -127,7 +129,7 @@ const Header = () => {
                 <div>
                   <button
                     type="button"
-                    className="bg-indigo-900 flex text-sm z-40 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-white"                    
+                    className="bg-indigo-900 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-white"                    
                     aria-expanded="false"
                     ref={btn_img}
                     aria-haspopup="true"
@@ -137,7 +139,7 @@ const Header = () => {
                         setMenu(menu)
                       }, 5000)
                     }}
-                    disabled
+                  
                   >
                     <span className="sr-only">Open user menu</span>
                     {auth.img_perfil === null ? (
@@ -151,8 +153,7 @@ const Header = () => {
                     ) : (
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="perfil"
+                        src={`${auth.img_perfil}`}
                       />
                     )}
                   </button>
@@ -160,7 +161,7 @@ const Header = () => {
 
                 {menu && (
                   <div
-                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none animate__animated animate__fadeInDown"
+                    className="origin-top-right absolute z-40 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none animate__animated animate__fadeInDown"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"

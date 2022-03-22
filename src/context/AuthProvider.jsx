@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext } from 'react'
 import clienteAxios from '../config/axios'
+import { fileUpload } from '../helpers/fileUpload'
+
 
 const AuthContext = createContext()
 
@@ -106,6 +108,13 @@ const AuthProvider = ({ children }) => {
 
   }
 
+  const subirImagen = async (img) => {
+    console.log(img);
+
+    const fileUrl = await fileUpload(img)
+    console.log(fileUrl);
+  }
+
   const cerrarSesion = () => {
     localStorage.removeItem('token')
     setAuth({})
@@ -120,6 +129,7 @@ const AuthProvider = ({ children }) => {
         loading,
         actualizarPerfil,
         guardarPassword,
+        subirImagen,
         cerrarSesion,
       }}
     >
