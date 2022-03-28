@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import { useAuth } from '../../../hooks/useAuth'
 import { Alerta } from '../../../components/Alerta'
 import { useForm } from '../../../hooks/useForm'
-import { fileUpload } from '../../../helpers/fileUpload'
+
 
 export const EditarPerfil = () => {
   const { auth, actualizarPerfil, guardarPassword, subirImagen } = useAuth()
@@ -17,23 +17,36 @@ export const EditarPerfil = () => {
     setPerfil(auth)
   }, [auth])
 
+
+  useLayoutEffect(() => {
+    setPerfil({
+      ...perfil,
+      img_perfil : handleFileChange()
+    })
+    console.log(perfil);
+  }, [])
+
   const { pass, new_pass } = formValues
+
+
   const { nombre, telefono, email, img_perfil } = perfil
 
 
   const handleFileChange = async (e) => {
     e.preventDefault()
     const file = e.target.files[0]
+    const resp = await subirImagen(file)
 
-    console.log(file);
-    if (file) {
-      const resultado = await fileUpload(file)
-      setPerfil({
+    setPerfil({
       ...perfil,
-      [e.target.name] : resultado
+      [e.target.name] : resp
     })
-    }
+    
+    return resp
   }
+
+  console.log('despues del layout', img_perfil);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()

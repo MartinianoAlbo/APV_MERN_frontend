@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from 'react'
+import { useState, useLayoutEffect, createContext } from 'react'
 import clienteAxios from '../config/axios'
 import { fileUpload } from '../helpers/fileUpload'
 
@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({})
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const autenticarUsuario = async () => {
       const token = localStorage.getItem('token')
 
@@ -22,11 +22,13 @@ const AuthProvider = ({ children }) => {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}` ,
-        },
+        }
       }
 
       try {
         const { data } = await clienteAxios.get('/veterinarios/perfil', config)
+        console.log(data);
+
         setAuth(data)
 
       } catch (error) {
@@ -73,8 +75,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const guardarPassword = async (datos) => {
-    
-
+  
     const token = localStorage.getItem('token')
 
     if (!token) {
@@ -104,14 +105,15 @@ const AuthProvider = ({ children }) => {
       
     }
 
-
   }
 
   const subirImagen = async (img) => {
-    console.log(img);
-
-    const fileUrl = await fileUpload(img)
-    console.log(fileUrl);
+    
+    if (img) {
+      const resultado = await fileUpload(img)
+      return resultado
+    }
+  
   }
 
   const cerrarSesion = () => {

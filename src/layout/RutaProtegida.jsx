@@ -14,9 +14,10 @@ const RutaProtegida =  () => {
   }
 
   return (
-    <>
+    <div>
+      
       <Header />
-
+    
       {auth?._id ? (
         <main className="container mx-auto mt-10 animate__animated animate__fadeIn">
           <Outlet />
@@ -26,7 +27,7 @@ const RutaProtegida =  () => {
       )}
 
       <Footer />
-    </>
+    </div>
   )
 }
 

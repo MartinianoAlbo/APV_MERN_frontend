@@ -3,9 +3,10 @@ import { useForm } from '../../hooks/useForm'
 import { Alerta } from '../../components/Alerta'
 import { useState } from 'react'
 import clienteAxios from '../../config/axios'
-import Swal from 'sweetalert2'
+
 
 export const Registrar = () => {
+  
   const [formValues, handleInputChange, reset] = useForm({
     nombre: '',
     email: '',
